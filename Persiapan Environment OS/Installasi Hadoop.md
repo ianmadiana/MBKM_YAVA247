@@ -1,6 +1,7 @@
 # Install Hadoop di Ubuntu 22.04
 
 #### By _Ian Madiana_
+#### Source: [Medium - Festus Morumbasi](https://medium.com/@festusmorumbasi/installing-hadoop-on-ubuntu-20-04-4610b6e0391e)
 ## Langkah 1 - Membuat user untuk environment Hadoop
 Buat user baru untuk mengelola Hadoop:
 ```sh
@@ -32,7 +33,7 @@ Ganti ke user hadoop:
 ```sh
 sudo su - hadoop
 ```
-![Java version](images/switch%20user.png)
+![Switch user](images/switch%20user.png)
 Generate public dan private key:
 ```sh
 ssh-keygen -t rsa
@@ -71,7 +72,7 @@ Cek lokasi “JAVA_HOME”  dengan perintah:
 ```sh
 which java
 ```
-![Java version](images/which%20java.png)
+![Which java](images/which%20java.png)
 Konfigurasi environment java:
 ```sh
 dirname $(dirname $(readlink -f $(which java)))
@@ -95,12 +96,12 @@ dirname $(dirname $(readlink -f $(which java)))
     export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
     export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
     ```
-    ![Java version](images/edit%20bashrc.png)
+    ![Edit environment](images/edit%20bashrc.png)
     Muat ulang file konfigurasi:
     ```sh
     source ~/.bashrc
     ```
-    ![Java version](images/reload%20bashrc.png)
+    ![Reload bashrc](images/reload%20bashrc.png)
 - ### Langkah 5.b - Edit file hadoop-env.sh
     File hadoop-env.sh berfungsi sebagai file master untuk mengonfigurasi  YARN, HDFS, MapReduce, dan Hadoop.
 
@@ -126,7 +127,7 @@ dirname $(dirname $(readlink -f $(which java)))
          </property>
     </configuration>
     ```
-    ![Java version](images/edit%20core-site.png)
+    ![Edit core-site.xml](images/edit%20core-site.png)
 - ### Langkah 5.d - edit file hdfs-site.xml
     Properti dalam file hdfs-site.xml mengatur lokasi untuk menyimpan metadata node, file fsimage, dan mengedit file log. Nilai default dfs.replication dari 3 perlu diubah menjadi 1 agar sesuai dengan penyiapan single node.
     
@@ -152,7 +153,7 @@ dirname $(dirname $(readlink -f $(which java)))
         </property>
     </configuration>
     ```
-    ![Java version](images/Edit%20hdfs-site.png)
+    ![Edit hdfs-site.xml](images/Edit%20hdfs-site.png)
 - ### Langkah 5.e - edit file mapred-site.xml
     Gunakan perintah berikut untuk mengedit mapred-site.xml:
     ```sh
@@ -167,7 +168,7 @@ dirname $(dirname $(readlink -f $(which java)))
         </property> 
     </configuration>
     ```
-    ![Java version](images/edit%20mapred.png)
+    ![Edit mapred-site.xml](images/edit%20mapred.png)
 - ### Langkah 5.f - edit file yarn-site.xml
     File yarn-site.xml digunakan untuk menentukan pengaturan yang berkaitan dengan YARN. File Ini berisi konfigurasi untuk Node Manager, Resource Manager, Containers, dan Application Master.
     ```
@@ -182,42 +183,42 @@ dirname $(dirname $(readlink -f $(which java)))
         </property>
     </configuration>
     ```
-    ![Java version](images/Edit%20yarn-site.png)
+    ![Edit yarn-site.xml](images/Edit%20yarn-site.png)
 - ### Langkah 5.g - Format HDFS NameNode
     Lakukan format NameNode sebelum menjadlankan servis Hadoop pertama kali:
     ```sh
     hdfs namenode -format
     ```
-    ![Java version](images/namenode%20format.png)
+    ![Format namenode](images/namenode%20format.png)
 ## Langkah 6 - Start Hadoop Cluster
 Start NameNode dan DataNode:
 ```sh
 start-dfs.sh
 ```
-![Java version](images/start-dfs.png)
+![Start dfs](images/start-dfs.png)
 Start Yarn dan node manager:
 ```sh
 start-yarn.sh
 ```
-![Java version](images/start-yarn.png)
+![Start yarn](images/start-yarn.png)
 Verifikasi komponen yang sedang berjalan:
 ```sh
 jps
 ```
-![Java version](images/jps.png)
+![jps](images/jps.png)
 ## Langkah 7 - Akses UI Hadoop dari browser:
 Akses UI Hadoop NameNode:
 ```sh
 http://localhost:9870
 ```
-![Java version](images/NameNode.png)
+![Akses UI Hadoop NameNode](images/NameNode.png)
 Akses ke DataNode:
 ```sh
 http://localhost:9864
 ```
-![Java version](images/DataNodes.png)
+![Akses ke DataNode](images/DataNodes.png)
 Akses YARN Resource Manager:
 ```sh
 http://localhost:8088
 ```
-![Java version](images/YARN%20Resource%20Manager.png)
+![Akses YARN Resource Manager](images/YARN%20Resource%20Manager.png)
