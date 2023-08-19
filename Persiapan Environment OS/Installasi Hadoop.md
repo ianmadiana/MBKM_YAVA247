@@ -23,7 +23,7 @@ Cek versi java yang terinstal:
 ```sh
 java -version
 ```
-![Java version](images/java-version.png)
+![Java version](https://iili.io/Hbfk944.png)
 ## Langkah 3 - Instal OpenSSH
 Instal server dan klien OpenSSH dengan perintah berikut:
 ```sh
@@ -72,7 +72,7 @@ Cek lokasi “JAVA_HOME”  dengan perintah:
 ```sh
 which java
 ```
-![Which java](images/which%20java.png)
+![Which java](https://iili.io/HbfkIaV.png)
 Konfigurasi environment java:
 ```sh
 dirname $(dirname $(readlink -f $(which java)))
@@ -96,12 +96,12 @@ dirname $(dirname $(readlink -f $(which java)))
     export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
     export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
     ```
-    ![Edit environment](images/edit%20bashrc.png)
+    ![Edit environment](https://iili.io/HbfesYN.png)
     Muat ulang file konfigurasi:
     ```sh
     source ~/.bashrc
     ```
-    ![Reload bashrc](images/reload%20bashrc.png)
+    ![Reload bashrc](https://iili.io/Hbfk2vS.png)
 - ### Langkah 5.b - Edit file hadoop-env.sh
     File hadoop-env.sh berfungsi sebagai file master untuk mengonfigurasi  YARN, HDFS, MapReduce, dan Hadoop.
 
@@ -113,6 +113,7 @@ dirname $(dirname $(readlink -f $(which java)))
     ```sh
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
     ```
+    ![Edit hadoop-env](https://iili.io/HbfeQpt.png)
 - ### Langkah 5.c - edit file core-site.xml
     File core-site.xml mendefinisikan HDFS dan properti Hadoop core. Buka file core-site.xml:
     ```sh
@@ -127,7 +128,7 @@ dirname $(dirname $(readlink -f $(which java)))
          </property>
     </configuration>
     ```
-    ![Edit core-site.xml](images/edit%20core-site.png)
+    ![Edit core-site.xml](https://iili.io/Hbfei2p.png)
 - ### Langkah 5.d - edit file hdfs-site.xml
     Properti dalam file hdfs-site.xml mengatur lokasi untuk menyimpan metadata node, file fsimage, dan mengedit file log. Nilai default dfs.replication dari 3 perlu diubah menjadi 1 agar sesuai dengan penyiapan single node.
     
@@ -153,7 +154,7 @@ dirname $(dirname $(readlink -f $(which java)))
         </property>
     </configuration>
     ```
-    ![Edit hdfs-site.xml](images/Edit%20hdfs-site.png)
+    ![Edit hdfs-site.xml](https://iili.io/HbfetTX.png)
 - ### Langkah 5.e - edit file mapred-site.xml
     Gunakan perintah berikut untuk mengedit mapred-site.xml:
     ```sh
@@ -168,7 +169,7 @@ dirname $(dirname $(readlink -f $(which java)))
         </property> 
     </configuration>
     ```
-    ![Edit mapred-site.xml](images/edit%20mapred.png)
+    ![Edit mapred-site.xml](https://iili.io/HbfeyGf.png)
 - ### Langkah 5.f - edit file yarn-site.xml
     File yarn-site.xml digunakan untuk menentukan pengaturan yang berkaitan dengan YARN. File Ini berisi konfigurasi untuk Node Manager, Resource Manager, Containers, dan Application Master.
     ```
@@ -183,42 +184,42 @@ dirname $(dirname $(readlink -f $(which java)))
         </property>
     </configuration>
     ```
-    ![Edit yarn-site.xml](images/Edit%20yarn-site.png)
+    ![Edit yarn-site.xml](https://iili.io/HbfkJ3l.png)
 - ### Langkah 5.g - Format HDFS NameNode
     Lakukan format NameNode sebelum menjadlankan servis Hadoop pertama kali:
     ```sh
     hdfs namenode -format
     ```
-    ![Format namenode](images/namenode%20format.png)
+    ![Format namenode](https://iili.io/Hbfk3y7.png)
 ## Langkah 6 - Start Hadoop Cluster
 Start NameNode dan DataNode:
 ```sh
 start-dfs.sh
 ```
-![Start dfs](images/start-dfs.png)
+![Start dfs](https://iili.io/Hbfkz3Q.png)
 Start Yarn dan node manager:
 ```sh
 start-yarn.sh
 ```
-![Start yarn](images/start-yarn.png)
+![Start yarn](https://iili.io/HbfknGj.png)
 Verifikasi komponen yang sedang berjalan:
 ```sh
 jps
 ```
-![jps](images/jps.png)
+![jps](https://iili.io/Hbfkda2.png)
 ## Langkah 7 - Akses UI Hadoop dari browser:
 Akses UI Hadoop NameNode:
 ```sh
 http://localhost:9870
 ```
-![Akses UI Hadoop NameNode](images/NameNode.png)
+![Akses UI Hadoop NameNode](https://iili.io/Hbfkfje.png)
 Akses ke DataNode:
 ```sh
 http://localhost:9864
 ```
-![Akses ke DataNode](images/DataNodes.png)
+![Akses ke DataNode](https://iili.io/HbfeLvI.png)
 Akses YARN Resource Manager:
 ```sh
 http://localhost:8088
 ```
-![Akses YARN Resource Manager](images/YARN%20Resource%20Manager.png)
+![Akses YARN Resource Manager](https://iili.io/HbfkT8B.png)
