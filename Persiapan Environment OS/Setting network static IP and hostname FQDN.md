@@ -1,5 +1,19 @@
 # Setting network static IP
-
+Edit file netplan:
+```ssh
+sudo nano /etc/netplan/01-netcfg.yaml
+```
+Konfigurasi file menjadi seperti berikut:
+![Edit file netcfg](https://iili.io/HbfiY5G.png)
+Terapkan perubahan dengan perintah:
+```ssh
+sudo netplan apply
+```
+Cek perubahan konfigurasi dengan perintah:
+```ssh
+ip addr show dev enp1s0
+```
+![hasil konfigurasi](https://iili.io/Hbfiaef.png)
 # Setting hostname FQDN
 ## Atur hostname menjadi `yubuntu01.labs247.com`
 
