@@ -4,26 +4,11 @@ Update sistem:
 ```ssh
 sudo apt update
 ```
-Download file maven 3.6.x:
+Download maven melalui apt:
 ```ssh
-wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+sudo apt install maven
 ```
-
-Ekstrak file maven:
-```ssh
-tar -xvf apache-maven-3.6.3-bin.tar.gz
-```
-
-Pindahkan folder hasil ekstrak:
-```ssh
-mv apache-maven-3.6.3 /opt/
-```
-
-Atur M2_HOME dan variabel
-```ssh
-sudo nano ~/.profile
-```
-![edit .profile](https://iili.io/HbqAVGj.png)
+![Install maven](https://iili.io/HmafbCF.png)
 
 Cek versi maven:
 ```ssh
