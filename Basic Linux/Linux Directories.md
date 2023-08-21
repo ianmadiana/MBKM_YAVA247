@@ -5,7 +5,7 @@
     |--------|------|
     | pwd | Menampilkan direktori kerja saat ini. |
     | pwd -L  | Menampilkan jalur logis direktori kerja saat ini.|
-    | pwd -R | Menampilkan jalur fisik direktori kerja saat ini. |
+    | pwd -P | Menampilkan jalur fisik direktori kerja saat ini. |
 
 #
 - Change Directory (cd)
