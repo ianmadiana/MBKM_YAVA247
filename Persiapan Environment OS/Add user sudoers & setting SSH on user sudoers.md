@@ -3,17 +3,27 @@
 ## Add user `orion`
 Gunakan perintah berikut untuk menambahkan user baru di linux:
 ```ssh
-sudo adduser <namauser>
+sudo adduser orion
 ```
 Untuk pindah user gunakan perintah:
 ```ssh
-sudo su - <namauser>
+sudo su - orion
+```
+Menambahkan user ke "sudo" group:
+```sh
+sudo usermod -aG sudo orion
 ```
 Untuk menampilkan pengguna saat ini, gunakan perintah:
 ```ssh
 whoami
 ```
 ![add user](https://iili.io/Hbfe64R.png)
+Untuk melihat user yang berada di group sudo:
+```ssh
+getent group sudo
+```
+![group sudo](https://iili.io/HmAmTdb.png)
+
 
 # Setting SSH Access Remote di User Sudoers
 
@@ -27,18 +37,13 @@ Buat ssh key dengan perintah:
 ssh-keygen -t rsa
 ```
 
+Salin public key:
+```sh
+ssh-copy-id orion@192.168.1.42
+```
+
 Atur file sshd_config agar opsi aunthetication diaktifkan:
 ```ssh
 sudo nano /etc/ssh/sshd_config
 ```
 ![edit sshd_config](https://iili.io/Hbqnwzv.png)
-
-remote malalui ssh:
-```
-ssh orion@192.168.1.42
-```
-![test ssh](https://iili.io/Hm2ecSj.png)
-```ssh
-ssh orion@yubuntu01.labs247.com
-```
-![test ssh](https://iili.io/HbqnNXR.png)
