@@ -17,3 +17,23 @@ awk '{print $1}' data.txt
 Pada contoh di atas, `{print $1}` adalah aksi yang menginstruksikan awk untuk mencetak kolom pertama dari setiap baris.
 
 awk adalah alat yang kuat dan serbaguna untuk pemrosesan teks dalam lingkungan Linux, dan memiliki banyak fitur dan kemampuan yang dapat membantu dalam manipulasi dan analisis data teks.
+
+| Perintah awk                    | Deskripsi                                      |
+|---------------------------------|-----------------------------------------------|
+| `awk`                           | Perintah untuk memproses dan memanipulasi     |
+|                                 | data berkas teks baris demi baris.            |
+|                                 | Awk bekerja dengan menggunakan pola          |
+|                                 | pemisah (separator) dan mengizinkan           |
+|                                 | penggunaan ekspresi dan fungsi khusus.         |
+|                                 |                                               |
+| **Contoh Penggunaan:**           |                                               |
+| `awk '{print $1}' file.txt`      | Menampilkan kolom pertama dari setiap baris   |
+|                                 | dalam berkas `file.txt`.                      |
+|                                 |                                               |
+| `awk -F',' '{print $2}' data.csv`| Menampilkan kolom kedua dari setiap baris     |
+|                                 | dalam berkas CSV `data.csv` dengan koma       |
+|                                 | sebagai pemisah.                             |
+|                                 |                                               |
+| `awk '/pattern/{print $3}' file` | Menampilkan kolom ketiga dari baris-baris     |
+|                                 | yang sesuai dengan pola tertentu dalam        |
+|                                 | berkas `file`.                               |
