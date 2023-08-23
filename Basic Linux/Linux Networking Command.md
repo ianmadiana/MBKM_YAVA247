@@ -30,3 +30,54 @@
 | `curl -d [DATA] [URL]` | Mengirim data dalam permintaan POST           | `curl -d "key=value" https://api.example.com/submit` |
 | `curl -H [HEADER] [URL]` | Mengatur header kustom dalam permintaan      | `curl -H "Authorization: Bearer TOKEN" https://api.example.com/resource` |
 | `curl -o [OUTPUT_FILE] [URL]` | Menyimpan hasil dalam file yang ditentukan | `curl -o output.html https://www.example.com` |
+
+## Telnet command
+| Perintah        | `telnet`                                                                       |
+|------------------|-------------------------------------------------------------------------------|
+| Pengertian       | Perintah `telnet` digunakan untuk mengakses host atau server melalui protokol Telnet, yang memungkinkan koneksi jaringan berbasis teks. Ini berguna untuk menguji konektivitas, mengakses layanan jarak jauh, dan sebagainya. |
+| Contoh Penggunaan| 1. Menghubungi server Telnet pada port default (23):                            |
+|                  |    ```
+|                  |    telnet example.com
+|                  |    ```                                                                        |
+|                  |                                                                              |
+|                  | 2. Menghubungi server Telnet dengan port khusus:                               |
+|                  |    ```
+|                  |    telnet example.com 8080
+|                  |    ```                                                                        |
+|                  |                                                                              |
+|                  | 3. Menghubungkan ke server menggunakan alamat IP:                              |
+|                  |    ```
+|                  |    telnet 192.168.1.1
+|                  |    ```                                                                        |
+
+## SSH Linux
+| SSH (Secure Shell) di Linux |                                    |
+|-----------------------------|------------------------------------|
+| **Pengertian**              | SSH adalah protokol jaringan yang   |
+|                             | digunakan untuk mengamankan komunikasi   |
+|                             | antara dua perangkat melalui jaringan, |
+|                             | seperti mengakses server dari jarak   |
+|                             | jauh dengan aman. Dengan menggunakan  |
+|                             | enkripsi, SSH mengamankan informasi   |
+|                             | yang dikirimkan, seperti kata sandi   |
+|                             | dan data rahasia lainnya.             |
+| **Contoh Penggunaan**       | - Mengakses server dari jarak jauh   |
+|                             |   dengan perintah:                   |
+|                             |   ```
+|                             |   ssh username@alamat_ip
+|                             |   ```                                |
+|                             | - Mengunggah file ke server dengan   |
+|                             |   SCP (Secure Copy Protocol):        |
+|                             |   ```
+|                             |   scp file_lokal.txt username@alamat_ip:tujuan/
+|                             |   ```                                |
+|                             | - Menjalankan perintah pada server   |
+|                             |   dari jarak jauh:                   |
+|                             |   ```
+|                             |   ssh username@alamat_ip 'perintah_linux'
+|                             |   ```                                |
+
+## Linux mail command
+| Perintah         | Pengertian                                             | Contoh Penggunaan                                                   |
+|------------------|--------------------------------------------------------|--------------------------------------------------------------------|
+| mail             | Perintah untuk mengirim dan membaca email dari terminal | Mengirim email: `echo "Isi email" \| mail -s "Subjek" user@example.com` <br> Membaca email: `mail` |
