@@ -36,7 +36,7 @@ Variabel yang hanya berlaku dalam skrip atau proses tertentu. Mereka tidak akan 
 Ketika Anda menjalankan skrip dengan argumen yang dilewatkan di baris perintah, variabel seperti $1, $2, dll., akan mewakili argumen-argumen ini dalam skrip.
 
 ### Variabel Khusus: 
-Ada variabel bawaan yang memiliki makna khusus, seperti $? yang berisi kode keluaran dari perintah terakhir, $$ yang berisi ID proses skrip saat ini, dan lain-lain.
+Ada variabel bawaan yang memiliki makna khusus, seperti $? yang berisi kode keluaran dari perintah terakhir, $ $ yang berisi ID proses skrip saat ini, dan lain-lain.
 
 ### Variabel Array: 
 Anda dapat membuat variabel yang berisi beberapa nilai dalam bentuk array.
