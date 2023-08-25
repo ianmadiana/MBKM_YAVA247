@@ -8,27 +8,35 @@ if [ -e "$csv_file" ]; then
     rm "$csv_file"
 fi
 
-# array nama
-names=("Arya" "Bunga" "Cakra" "Dinda" "Eka" "Fajar" "Gita" "Hadi" "Indra" "Joko")
-
 # header file CSV
 echo "Name,Username,Password" > $csv_file
 
 # fungsi untuk menghasilkan kata sandi acak sesuai pola
-# username+1..array length+@+!
+# username+random 1-9+@+!
 generate_password() {
-    local username="$1"
-    local password="${username}$(shuf -i 1-${#names[@]} -n 1)@!"
+    local names="$1"
+    local random_number=$(shuf -i 1-9 -n 1)
+    local password="${names}${random_number}@!"
+    # Menghapus karakter ' dari password
+    password=$(echo "$password" | tr -d "'")
     echo "$password"
 }
 
+# fungsi untuk menghasilkan username yang tidak mengandung simbol
+generate_username() {
+    local names="$1"
+    local filter_username=$(echo "$names" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d "'")
+    echo "$filter_username"
+}
+
 # menambahkan pengguna dari array name ke dalam file CSV
-for ((i=0; i<${#names[@]}; i++)); do
-    username=$(echo "${names[i]}" | tr '[:upper:]' '[:lower:]') # ubah menjadi lowercase
-    password=$(generate_password $username)
+for ((i=1; i<=$1; i++)); do
+    names=$(shuf -n 1 /usr/share/dict/words)
+    username=$(generate_username "$names")
+    password=$(generate_password "$names")
     
     # tambahkan baris user ke file CSV
-    echo "${names[i]},$username,$password" >> $csv_file
+    echo "$names,$username,$password" >> $csv_file
 done
 
-echo "File user telah dibuat dengan ${#names[@]} pengguna dan kata sandi."
+echo "File user telah dibuat"
