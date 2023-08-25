@@ -29,16 +29,16 @@ Variabel dapat dihapus menggunakan perintah unset. Misalnya: `unset nama`
 
 Variabel Lingkungan (Environment Variables): Variabel-variabel ini dapat diakses oleh berbagai program dan skrip dalam lingkungan sistem. Contoh variabel lingkungan yang umum adalah PATH, HOME, dan USER.
 
-## Variabel Lokal: 
+### Variabel Lokal: 
 Variabel yang hanya berlaku dalam skrip atau proses tertentu. Mereka tidak akan terlihat oleh program lain yang berjalan secara terpisah.
 
-## Variabel Argumen Skrip (Command-Line Arguments): 
+### Variabel Argumen Skrip (Command-Line Arguments): 
 Ketika Anda menjalankan skrip dengan argumen yang dilewatkan di baris perintah, variabel seperti $1, $2, dll., akan mewakili argumen-argumen ini dalam skrip.
 
-## Variabel Khusus: 
+### Variabel Khusus: 
 Ada variabel bawaan yang memiliki makna khusus, seperti $? yang berisi kode keluaran dari perintah terakhir, $$ yang berisi ID proses skrip saat ini, dan lain-lain.
 
-## Variabel Array: 
+### Variabel Array: 
 Anda dapat membuat variabel yang berisi beberapa nilai dalam bentuk array.
 
 Penggunaan variabel dalam shell scripting sangat penting untuk menyimpan data sementara, berkomunikasi antara program, dan melakukan manipulasi data. Dengan memahami cara mendefinisikan, mengakses, dan mengelola variabel, Anda dapat membuat skrip shell yang lebih kuat dan efisien.
