@@ -42,4 +42,20 @@ Looping dalam shell scripting memungkinkan Anda untuk menjalankan serangkaian pe
             echo "Iterasi ke-$counter"
             ((counter++))
         done
+4. if then elif 
+   Anda dapat menggunakan pernyataan if, then, elif (else if), dan fi (end of if) untuk mengatur alur eksekusi skrip berdasarkan kondisi yang diberikan. Berikut adalah contoh penggunaan struktur if then elif dalam shell script:
+   ```sh
+   #!/bin/bash
+    
+    # Contoh skrip dengan if-then-elif-fi
+    age=25
+
+    if [ $age -lt 18 ]; then
+        echo "Anda masih di bawah umur."
+    elif [ $age -ge 18 ] && [ $age -lt 60 ];   then
+        echo "Anda dewasa."
+    else
+        echo "Anda sudah lanjut usia."
+    fi
+    ```
 
