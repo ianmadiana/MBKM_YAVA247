@@ -8,7 +8,6 @@ Berikut adalah beberapa mekanisme penutupan kutipan yang umum digunakan dalam sh
 Ketika Anda mengapit teks dengan tanda kutip satu, semua karakter di dalamnya dianggap sebagai string teks harfiah (literal). Tidak ada interpretasi atau ekspansi karakter khusus, termasuk variabel atau perintah.
 
 Contoh:
-
 ```sh
 echo 'Ini adalah teks $HOME'
 ```
@@ -18,13 +17,12 @@ Output: Ini adalah teks $HOME
 Dalam tanda kutip dua, karakter dolar ($) dan backtick (`) masih diinterpretasikan (variabel dan subtitusi perintah dilakukan), tetapi karakter lainnya dianggap harfiah.
 
 Contoh:
-
 ```sh
 echo "Ini adalah teks $HOME"
 ```
 Output: Ini adalah teks /path/ke/direktori
 
-## 3. Backslash (): 
+## 3. Backslash ( \ ): 
 Dalam shell, karakter backslash digunakan sebagai escape character. Ini memungkinkan Anda untuk melindungi karakter berikutnya dari interpretasi khususnya.
 
 Contoh:
@@ -56,7 +54,7 @@ Wildcards (Pencocokan Pola):
 - `*` (Bintang): Cocokkan dengan nol atau lebih karakter.
 - `?` (Tanda Tanya): Cocokkan dengan satu karakter.
 - `[ ]` (Kurung Siku): Cocokkan dengan satu karakter dari karakter yang diberikan dalam kurung siku.
-- `|` Pipelines (Pipa): (Garis Vertikal): Menghubungkan output dari suatu perintah ke input perintah berikutnya. Dengan ini, Anda bisa memanipulasi data di antara beberapa perintah.
+- `|` Pipelines (Pipa) atau Garis Vertikal: Menghubungkan output dari suatu perintah ke input perintah berikutnya. Dengan ini, Anda bisa memanipulasi data di antara beberapa perintah.
 - `>` Redirection (Pengalihan):  (Tanda Panah Kanan): Mengarahkan output dari suatu perintah ke dalam sebuah berkas, menggantikan isi berkas jika berkas sudah ada.
 - `>>` (Dua Tanda Panah Kanan): Mengarahkan output dari suatu perintah ke dalam sebuah berkas, tetapi menambahkan ke berkas tanpa menghapus isinya.
 - `<` (Tanda Panah Kiri): Mengarahkan input dari suatu perintah dari sebuah berkas.
