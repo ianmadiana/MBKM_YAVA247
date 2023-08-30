@@ -160,7 +160,7 @@ echo "Done"
 ```
 
 Menjalankan script:
-![](https://iili.io/HyOidLx.png)
+![](https://iili.io/HyOsXoJ.png)
 
 Hasil output untuk generate_user():
 ![](https://iili.io/HyO6scP.png)
