@@ -8,9 +8,21 @@ Berikut adalah penjelasan tentang beberapa aspek penting terkait dengan fungsi s
 Anda dapat membuat fungsi shell dengan mendefinisikan blok kode di dalamnya. Format umumnya adalah:
 
 ```sh
-nama_fungsi() {
-    # kode fungsi di sini
+#!/bin/sh
+
+# Define your function here
+Hello () {
+   echo "Hello World $1 $2"
 }
+Hello $1 $2
+```
+Menjankan script di terminal:
+```sh
+./program.sh John Jane
+```
+Hasil output:
+```sh
+Hello World John Jane
 ```
 ## 2. Meneruskan Parameter ke Fungsi (Pass Parameters to a Function):
 Fungsi shell dapat menerima parameter sebagai input. Parameter ini diteruskan saat memanggil fungsi. Contohnya:
@@ -36,6 +48,30 @@ echo "Hasil fungsi: $?"
 
 ## 4. Fungsi Bersarang (Nested Functions):
 Anda dapat menempatkan definisi fungsi di dalam fungsi lainnya. Ini dikenal sebagai fungsi bersarang. Fungsi dalam fungsi hanya dapat dipanggil di dalam fungsi induknya.
+
+Contoh scipt:
+```sh
+#!/bin/sh
+
+# Calling one function from another
+number_one () {
+   echo "This is the first function speaking..."
+   number_two
+}
+
+number_two () {
+   echo "This is now the second function speaking..."
+}
+
+# Calling function one.
+number_one
+```
+
+Hasil output:
+```
+This is the first function speaking...
+This is now the second function speaking...
+```
 
 ## 5. Memanggil Fungsi dari Prompt (Function Call from Prompt):
 Setelah fungsi didefinisikan, Anda dapat memanggilnya dari prompt perintah shell. Misalnya:
