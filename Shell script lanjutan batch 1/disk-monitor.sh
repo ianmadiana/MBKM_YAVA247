@@ -5,7 +5,7 @@ disk_info=$(df -kh /)
 
 echo " ======================= Disk Monitor ======================="
 # hostname (ip addr)
-echo "Hostname: $(hostname) $(hostname -I)"
+echo "Hostname: $(hostname) ($(hostname -I))"
 
 # User running whoami
 echo "User running: $(whoami)"
