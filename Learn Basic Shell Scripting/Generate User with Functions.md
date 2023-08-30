@@ -79,6 +79,9 @@ edit_data(){
 }   
 ```
 
+Menjalankan script:
+![](https://iili.io/HyOidLx.png)
+
 Hasil output untuk generate_user():
 ![](https://iili.io/HyO6scP.png)
 
