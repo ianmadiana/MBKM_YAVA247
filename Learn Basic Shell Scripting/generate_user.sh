@@ -8,6 +8,18 @@ if [ -e "$csv_file" ]; then
     rm "$csv_file"
 fi
 
+names=("Adzana" "Amanda" "Angelina" "Aurellia" "Azizi" "Febriola" "Shania")
+
+# fungsi untuk menghasilkan nama acak dari array names
+name_gen(){
+    name=""
+    for _ in {1..2}; do
+        full_name=${names[$((RANDOM % ${#names[@]}))]}
+        name="$name $full_name"
+    done
+    echo "$name"
+}
+
 # header file CSV
 echo "Name|Username|Password" > $csv_file
 
@@ -18,25 +30,26 @@ generate_password() {
     local random_number=$(shuf -i 1-9 -n 1)
     local password="${names}${random_number}@!"
     # Menghapus karakter ' dari password
-    password=$(echo "$password" | tr -d "'")
+    password=$(echo "$password" | tr -d ' ')
     echo "$password"
 }
 
 # fungsi untuk menghasilkan username yang tidak mengandung simbol
 generate_username() {
     local names="$1"
-    local filter_username=$(echo "$names" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d "'")
+    local filter_username=$(echo "$names" | tr '[:upper:]' '[:lower:]' | tr -d ' ')
     echo "$filter_username"
 }
 
-# menambahkan pengguna name ke dalam file CSV
+# Jumlah pengguna yang akan dibuat diambil dari parameter yang dimasukkan
 for ((i=1; i<=$1; i++)); do
-    names=$(shuf -n 1 /usr/share/dict/words)
-    username=$(generate_username "$names")
-    password=$(generate_password "$names")
+    random_name=$(name_gen)
+    username=$(generate_username "$random_name")
+    password=$(generate_password "$random_name")
     
     # tambahkan baris user ke file CSV
-    echo "$names|$username|$password" >> $csv_file
+    echo "$random_name|$username|$password" >> $csv_file
 done
 
+sed -i 's/^ *//' "$csv_file"
 echo "File user telah dibuat"

@@ -17,6 +17,7 @@ update_data() {
     done < "$target"
 
     echo "Update Selesai"
+    sed -i 's/| /|/g' "$output"
 }
 
 update_data
