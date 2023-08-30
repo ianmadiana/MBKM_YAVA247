@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 # Fungsi me-generate user with parameter
 generate_user(){
     echo "----- Generate User -----"
@@ -90,6 +88,8 @@ edit_data(){
 
 #panggil function
 generate_user "$1"
+head user_data.csv
 edit_data
-
+head update_tabel.csv
+echo ""
 echo "Done"
