@@ -3,10 +3,9 @@
 ## Fungsi generate user dengan parameter:
 
 ```sh
-echo "----- Generate User -----"
-
 # Fungsi me-generate user with parameter
 generate_user(){
+    echo "----- Generate User -----"
     # nama file
     csv_file="user_data.csv"
 
@@ -52,10 +51,11 @@ generate_user(){
 
 ## Fungsi menambah kolom ID dan Code:
 ```sh
-echo "----- Edit Data -----"
+
 
 # Fungsi untuk menambah data (ID & Code) dari file yang telah di-generate
 edit_data(){
+    echo "----- Edit Data -----"
     target="user_data.csv"
     output="update_tabel.csv"
         

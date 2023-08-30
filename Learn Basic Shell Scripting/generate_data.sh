@@ -1,10 +1,12 @@
 #!/bin/bash
 
-echo "----- Generate User -----"
+
 
 # Fungsi me-generate user with parameter
 generate_user(){
-        # nama file
+    echo "----- Generate User -----"
+
+    # nama file
     csv_file="user_data.csv"
 
     # hapus file csv jika ada
@@ -46,10 +48,12 @@ generate_user(){
     echo "File user telah dibuat"
 }
 
-echo "----- Edit Data -----"
+
 
 # Fungsi untuk menambah data (ID & Code) dari file yang telah di-generate
 edit_data(){
+    echo "----- Edit Data -----"
+    
     target="user_data.csv"
     output="update_tabel.csv"
         
