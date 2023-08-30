@@ -1,4 +1,5 @@
 # Word Count 1
+Mencari kata tertentu di sebuah file:
 ```sh
 #!/bin/bash
 
@@ -15,8 +16,11 @@ echo "Jumlah line = $w_line"
 w_amet=$(grep -o -i "amet" "$target" | wc -w)
 echo "Jumlah kata yang mengandung amet: $w_amet"
 ```
+Hasil output:
+![SS](https://iili.io/HywfVkb.png)
 
 # Word Count 2
+Mengubah dari kata "amet" menjadi "tema":
 ```sh
 #!/bin/bash
 
@@ -56,7 +60,14 @@ echo "Jumlah line = $w_line"
 w_tema=$(grep -o -i "tema" "$hasil_tema" | wc -w)
 echo "Jumlah kata yang mengandung tema = $w_tema"
 ```
+![SS](https://iili.io/HywB15u.png)
+
+
 # Edit data
+Mengedit data CSV dengan menambahkan ID dan Code random serta mengganti delimiter koma (,) menjadi pipiline (|):
+
+Data tabel.csv:
+![SS](https://iili.io/HywBQ7n.png)
 ```sh
 #!/bin/bash
 
@@ -88,3 +99,6 @@ done
 
 echo "Done"
 ```
+
+Hasil output:
+![ss](https://iili.io/HywCYhv.png)
