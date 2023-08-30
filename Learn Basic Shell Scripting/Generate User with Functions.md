@@ -181,16 +181,12 @@ edit_data(){
 
 #panggil function
 generate_user "$1"
+head user_data.csv
 edit_data
-
+head update_tabel.csv
+echo ""
 echo "Done"
 ```
 
-Menjalankan script:
-![](https://iili.io/HyOsXoJ.png)
-
-Hasil output untuk generate_user():
-![](https://iili.io/HyO6scP.png)
-
-Hasil output untuk edit_data():
-![](https://iili.io/HyOPKRn.png)
+Hasil output:
+![ss](https://iili.io/HyeFihv.png)
