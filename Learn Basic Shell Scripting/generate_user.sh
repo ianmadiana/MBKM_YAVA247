@@ -9,7 +9,7 @@ if [ -e "$csv_file" ]; then
 fi
 
 # header file CSV
-echo "Name,Username,Password" > $csv_file
+echo "Name|Username|Password" > $csv_file
 
 # fungsi untuk menghasilkan kata sandi acak sesuai pola
 # username+random 1-9+@+!
@@ -36,7 +36,7 @@ for ((i=1; i<=$1; i++)); do
     password=$(generate_password "$names")
     
     # tambahkan baris user ke file CSV
-    echo "$names,$username,$password" >> $csv_file
+    echo "$names|$username|$password" >> $csv_file
 done
 
 echo "File user telah dibuat"
