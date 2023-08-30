@@ -1,3 +1,6 @@
+# Generate User with password
+
+```sh
 #!/bin/bash
 
 # nama file
@@ -40,3 +43,7 @@ for ((i=1; i<=$1; i++)); do
 done
 
 echo "File user telah dibuat"
+```
+
+Hasil output:
+![](https://iili.io/HyOcMhl.md.png)
