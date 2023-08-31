@@ -21,6 +21,8 @@ crontab:
 30-35/2 * * * * /bin/bash /home/hadoop/dir.sh
 ```
 
+![ss](https://iili.io/HyPQRs4.png)
+
 ## 2. Program untuk generate data dan put hasilnya ke hadoop dengan crontab
 
 ```sh
@@ -132,3 +134,5 @@ crontab:
 ```sh
 17-22/2 * * * * /bin/bash /home/hadoop/generate-data/generate_data.sh
 ```
+![ss](https://iili.io/HyPQ7ql.png)
+![ss](https://iili.io/HyPQwrB.png)
