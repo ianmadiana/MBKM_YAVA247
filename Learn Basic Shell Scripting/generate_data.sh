@@ -4,7 +4,7 @@
 generate_user(){
     echo "----- Generate User -----"
 
-    # nama file
+# nama file
 csv_file="user_data.csv"
 
 # hapus file csv jika ada
@@ -12,6 +12,7 @@ if [ -e "$csv_file" ]; then
     rm "$csv_file"
 fi
 
+#array nama
 names=("Adzana" "Amanda" "Angelina" "Aurellia" "Azizi" "Febriola" "Shania")
 
 # fungsi untuk menghasilkan nama acak dari array names
@@ -46,7 +47,7 @@ generate_username() {
 }
 
 # Jumlah pengguna yang akan dibuat diambil dari parameter yang dimasukkan
-for ((i=1; i<=$1; i++)); do
+for ((i=1; i<=100; i++)); do
     random_name=$(name_gen)
     username=$(generate_username "$random_name")
     password=$(generate_password "$random_name")
@@ -58,8 +59,6 @@ done
 sed -i 's/^ *//' "$csv_file"
 echo "File user telah dibuat"
 }
-
-
 
 # Fungsi untuk menambah data (ID & Code) dari file yang telah di-generate
 edit_data(){
@@ -87,9 +86,16 @@ edit_data(){
 }   
 
 #panggil function
-generate_user "$1"
-head user_data.csv
+generate_user
 edit_data
-head update_tabel.csv
-echo ""
-echo "Done"
+
+# simpan ke hadoop
+#format tanggal
+current_datetime=$(date +"%d-%m-%Y_Jam-%H-%M-%S")
+#nama direktori
+dir_name="dir_$current_datetime"
+#buat direktori di hadoop
+/usr/local/hadoop/bin/hadoop fs -mkdir "/tmp/$dir_name"
+#simpan data hasil generate ke hadoop dengan put
+/usr/local/hadoop/bin/hadoop fs -put "user_data.csv" "/tmp/$dir_name"
+/usr/local/hadoop/bin/hadoop fs -put "update_tabel.csv" "/tmp/$dir_name"
