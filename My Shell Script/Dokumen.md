@@ -1,6 +1,6 @@
 # Program untuk membuat directory di hadoop
 
-
+## 1. Program untuk membuat directory di hadoop dengan crontab
 File shell script:
 ```sh
 #!/bin/bash
@@ -21,7 +21,7 @@ crontab:
 30-35/2 * * * * /bin/bash /home/hadoop/dir.sh
 ```
 
-# Put update_tabel.csv to Hadoop
+## 2. Program untuk generate data dan put hasilnya ke hadoop dengan crontab
 
 ```sh
 #!/bin/bash
