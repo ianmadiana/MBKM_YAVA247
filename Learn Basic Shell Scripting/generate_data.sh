@@ -83,6 +83,9 @@ edit_data(){
 
     sed -i 's/| /|/g' "$output"
     echo "Update Selesai"
+
+    rm "$target"
+    echo "File user_data.csv dihapus"
 }   
 
 #panggil function
@@ -97,5 +100,4 @@ dir_name="dir_$current_datetime"
 #buat direktori di hadoop
 /usr/local/hadoop/bin/hadoop fs -mkdir "/tmp/$dir_name"
 #simpan data hasil generate ke hadoop dengan put
-/usr/local/hadoop/bin/hadoop fs -put "user_data.csv" "/tmp/$dir_name"
 /usr/local/hadoop/bin/hadoop fs -put "update_tabel.csv" "/tmp/$dir_name"
