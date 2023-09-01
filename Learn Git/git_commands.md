@@ -168,7 +168,7 @@ git merge <branch name>
 # Merge request di Git
 Dalam banyak sistem manajemen repositori Git, seperti GitHub, GitLab, dan Bitbucket, "merge request" (dikenal juga sebagai "pull request" di GitHub) adalah mekanisme yang memungkinkan kontributor untuk mengajukan perubahan kode ke repositori utama proyek dan meminta pemilik repositori untuk meninjau dan menggabungkan perubahan tersebut. Ini adalah cara umum untuk mengelola kolaborasi dalam pengembangan perangkat lunak terbuka atau proyek berbasis Git.
 
-## Create issue di Gitlab
+# Create issue di Gitlab
 1. Pilih menu `issue` dan pilih `New issue`:
    ![](https://iili.io/HytwNvj.png)
 2. Berikan judul dan deskripsi:
