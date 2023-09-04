@@ -1,0 +1,7 @@
+![Apache Maven Logo](https://miro.medium.com/v2/resize:fit:680/format:webp/1*7tyxCHXG4LXkwQZm5zCwVQ.png)
+
+# Apa itu Apache Maven?
+
+Apache Maven adalah Java Build Tools yang menggunakan konsep Project Object Model (POM). POM tersebut berisi informasi dan konfigurasi yang digunakan Maven untuk membuat project. Pada dasarnya POM adalah sebuath XML File yang terdapat di dalam project Maven dan di dalam File inilah konfigurasi dari project kita berada.
+
+Ada banyak keunggulan dari penggunaan Maven ini, diantaranya adalah Maven membuat struktur project sendiri sehingga project tersebut akan dapat dibuka dengan berbagai IDE dikarenakan Maven mendefinisikan projectnya sendiri. Selain itu memanage Dependency dengan Maven menjadi mudah. Biasanya dalam mendevelop aplikasi Java membutuhkan File Jar dari luar default jar yang tersedia pada JDK yang berisi Class-class untuk kemudian kita panggil. Artinya aplikasi kita dependent terhadap Class-class tersebut. Class-class tersebut pun terkadang dependent terhadap Class lain diluar jar packagenya. Dengan Maven hanya tinggal definisikan saja di File POM.xml dependency nya maka Maven akan otomatis mendownload file-file jar tersebut ke Repository sehingga dapat kita gunakan. Hal tersebut berbeda dengan mengimport File Jar secara manual yang biasanya digunakan jika mencreate project langsung dari IDE. File-file jar hasil download tersebut dapat dilihat di Folder (On Windows) `Users\NamaUser\.m2\repository`. Dalam Folder tersebut terdapat Folder-folder yang berisi file jar yang kita download beserta file-file lainnya.
