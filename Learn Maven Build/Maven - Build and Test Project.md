@@ -30,3 +30,42 @@ Jalankan dengan perintah:
 ```
 mvn clean package
 ```
+
+Hasil output:
+![](https://iili.io/J90ePO7.png)
+
+Menjalankan file jar yang telah digenerate:
+![](https://iili.io/J90k1m7.png)
+
+## Adding Java Source Files
+
+```java
+package com.companyname.bank;
+
+public class Util {
+   public static void printMessage(String message){
+      System.out.println(message);
+   }
+}
+```
+
+Update App.class untuk menggunakan kelas Util:
+```java
+package com.companyname.bank;
+
+/**
+* Hello world!
+*
+*/
+
+public class App {
+   public static void main( String[] args ){
+      Util.printMessage("Hello World!");
+   }
+}
+```
+
+Compile ulang menggunakan perintah:
+```sh
+mvn clean compile
+```
