@@ -2,7 +2,7 @@
 
 Berkas control adalah salah satu berkas yang digunakan dalam pembuatan dan pengelolaan paket Debian (.deb). Berkas ini berisi metadata dan informasi tentang paket Debian yang diperlukan oleh sistem manajemen paket Debian, seperti dpkg dan apt, untuk mengelola paket tersebut. Berkas control penting karena mendefinisikan berbagai aspek dari paket Debian, termasuk informasi paket, dependensi, deskripsi, dan pengaturan lainnya.
 
-## isi dari berkas control:
+## Isi dari berkas control:
 
 -  `Package` – nama program.
 -  `Version` – versi program.
