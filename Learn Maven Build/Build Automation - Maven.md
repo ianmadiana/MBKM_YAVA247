@@ -1,0 +1,11 @@
+# Build Automation
+
+Build Automation adalah praktik dalam pengembangan perangkat lunak yang bertujuan untuk mengotomatisasi proses pembangunan (build) kode sumber menjadi produk perangkat lunak yang dapat dijalankan. Dalam konteks Maven, Build Automation merujuk pada cara Maven mengotomatisasi proses pembangunan proyek perangkat lunak Java. Berikut adalah beberapa konsep penting terkait Build Automation di Maven:
+
+1. **Build Lifecycle**: Maven mendefinisikan sejumlah siklus (lifecycle) yang mengatur berbagai tahapan dalam proses pembangunan proyek. Siklus ini mencakup tahapan seperti kompilasi kode sumber, pengujian, paketisasi, dan lain-lain. Maven secara otomatis menjalankan fase-fase ini dalam urutan tertentu saat Anda menjalankan perintah build.
+2. **POM (Project Object Model)**: Setiap proyek Maven memiliki file POM (pom.xml) yang mendefinisikan semua informasi tentang proyek, termasuk dependensi, plugin yang digunakan, konfigurasi build, dan lain-lain. POM ini adalah panduan bagi Maven tentang bagaimana membangun proyek.
+3. **Dependency Management**: Maven memiliki sistem manajemen dependensi yang kuat. Anda dapat mendefinisikan dependensi proyek Anda di dalam file POM, dan Maven akan secara otomatis mengunduh dependensi tersebut dari repositori yang sesuai.
+4. **Plugin**: Maven menggunakan plugin untuk melakukan berbagai tugas dalam proses build. Misalnya, plugin maven-compiler-plugin digunakan untuk mengkompilasi kode sumber, sementara maven-surefire-plugin digunakan untuk menjalankan pengujian unit.
+5. **Central Repository**: Maven memiliki Central Repository, yang berisi berbagai plugin, dependensi, dan artefak perangkat lunak lainnya yang dapat digunakan dalam proyek Anda. Maven akan mengunduh artefak ini dari Central Repository secara otomatis jika diperlukan.
+6. **Build Profiles**: Anda dapat mendefinisikan profil (profile) khusus dalam POM untuk mengatur konfigurasi build yang berbeda. Ini memungkinkan Anda, misalnya, untuk mengonfigurasi build untuk lingkungan pengembangan, uji, atau produksi dengan mudah.
+7. **Continuous Integration (CI)**: Maven sering digunakan dalam alat-alat CI seperti Jenkins atau Travis CI untuk mengotomatisasi proses build dan pengujian proyek dalam lingkungan CI.
