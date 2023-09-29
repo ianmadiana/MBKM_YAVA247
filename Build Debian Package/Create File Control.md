@@ -10,15 +10,25 @@ Berkas control adalah salah satu berkas yang digunakan dalam pembuatan dan penge
 -  `Maintainer` – Nama dan alamat email dari pemelihara paket. Ini adalah orang atau tim yang bertanggung jawab atas paket tersebut.
 -  `Description` – Deskripsi singkat dan panjang tentang paket.
 
-## Contoh
+# Membuat file control
 
-```sh
-Package: hello
-Version: 1.0
-Architecture: arm64
-Maintainer: Internal Pointers <info@internalpointers.com>
-Description: A program that greets you.
- You can add a longer description here. Mind the space at the beginning of this paragraph.
-```
+- Buat folder `DEBIAN`:
+  ```sh
+  mkdir helloworld_1.0-1_arm64/DEBIAN
+  ```
+- Buat file `control` kosong:
+  ```sh
+  touch helloworld_1.0-1_arm64/DEBIAN/control
+  ```
+- Isi file `control` tersebut seperti contoh di bawah:
+- 
+  ```sh
+    Package: hello
+    Version: 1.0
+    Architecture: arm64
+    Maintainer: Internal Pointers <info@internalpointers.com>
+    Description: A program that greets you.
+    You can add a longer description here. Mind the space at the beginning of this paragraph.
+  ```
 
-Berkas `control` adalah salah satu komponen yang sangat penting dalam pembuatan paket Debian, karena membantu sistem manajemen paket Debian memahami bagaimana paket tersebut harus diinstal, dihapus, dan dikonfigurasi. Berkas ini harus disiapkan dengan hati-hati sesuai dengan persyaratan paket yang akan Anda buat atau kelola.
+File `control` adalah salah satu komponen yang sangat penting dalam pembuatan paket Debian, karena membantu sistem manajemen paket Debian memahami bagaimana paket tersebut harus diinstal, dihapus, dan dikonfigurasi. Berkas ini harus disiapkan dengan hati-hati sesuai dengan persyaratan paket yang akan Anda buat atau kelola.
