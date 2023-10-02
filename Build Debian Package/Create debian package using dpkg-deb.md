@@ -30,8 +30,8 @@ Package: hello-world
 Version: 1.0 
 Section: base 
 Priority: optional 
-Architecture: arm64 
-Depends: openjdk-8-jdk 
+Architecture: all 
+Depends: openjdk-11-jdk 
 Maintainer: ianmadiana@gmail.com 
 Description: run jenkins.war as a service.
 ```
@@ -102,6 +102,13 @@ sudo dpkg -i hello-world_1.0-1_arm64.deb
 ```
 
 ![](../image/20.png)
+
+Cek status jenkins:
+```
+sudo systemctl status jenkins
+```
+
+![](../image/23.png)
 
 ### Langkah 8
 
