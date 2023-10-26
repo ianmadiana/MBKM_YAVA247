@@ -29,10 +29,11 @@ gpg --list-keys
 ## Memberikan signature pada paket deb
 
 ```sh
-dpkg-sig
+dpkg-sig --sign builder -k <gpg_key> <nama_paket.deb>
 ```
 
-Gunakan command berikut untuk memberikan signature ke paket deb:
+Contoh perintah untuk memberikan signature ke paket bernama `xfsprogs_3.2.1_amd64.deb`:
+
 ```sh
 dpkg-sig --sign builder -k D4FB3841C5D11B1D487643C2DC67CBB122285A2C xfsprogs_3.2.1_amd64.deb
 ```
