@@ -7,7 +7,7 @@
    ![ss](../image/hive/2.png)
 2. Buat file data.txt untuk testing:
    ```
-   1201	Gopal	45000	Technical manager
+    1201	Gopal	45000	Technical manager
     1202	Manisha	45000	Proof reader
     1203	Masthanvali	40000	Technical writer
     1204	Kiran	40000	Hr Admin
