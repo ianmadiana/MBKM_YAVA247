@@ -106,7 +106,21 @@ HBase adalah database terdistribusi sumber terbuka dan non-relasional yang dikem
    ![Alt text](image-12.png)
 
    Selain menggunakan drop dapat menggunakan perintah drop_all dengan regex, berikut contoh penggunaannya:
+   ```
+   # drop_all ‘c.*’
+   ```
 9.  Create data
+    Berikut adalah perintah untuk membuat data di table HBase:
+    
+    Sintaks dasar:
+    ```
+    # put ’<table name>’,’row1’,’<colfamily:colname>’,’<value>’
+    ```
+    Contoh:
+    ```
+    # put ‘customers_test’,’1’,’personalData:customerNumber’,’131’
+    ```
+    ![Alt text](image-13.png)
 10. Update data
 11. Read data
 12. Hapus data
