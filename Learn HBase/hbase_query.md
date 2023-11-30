@@ -7,20 +7,107 @@ HBase adalah database terdistribusi sumber terbuka dan non-relasional yang dikem
     ```
     # su - hive
     ```
+    ![Alt text](image.png)
 2.	Masuk ke shell hbase
     ```
     # hbase shell
     ```
+    ![Alt text](image-1.png)
 ## HBase Query
 1. Membuat tabel
+   Perintah “create” digunakan untuk membuat tabel, pada saat pembuatan tabel harus ditentukan nama tabel dan nama kolom family.
+   sintaks dasar:
+   ```
+   # create ‘<table name>’,’<column family>’
+   ```
+   Contoh membuat tabel:
+   ```
+   # create 'customers_ian', 'personalData', 'professionalData'
+   ```
+   ![Alt text](image-2.png)
 2. Listing tabel
+   Listing tabel digunakan untuk menapilkan tabel yang tersedia di HBase. Berikut adalah contoh perintahnya:
+   ```
+   # list
+   ```
+   ![Alt text](image-3.png)
 3. Disable tabel
+   Perintah disable table digunakan ketika sebuah tabel akan dihapus. Ketika sebuah tabel telah di-disable maka perintah lain untuk mengakses tabel tersebut tidak bisa digunakan. Berikut contoh perintah dasarnya:
+   ```
+   # disable ‘nama tabel’
+   ```
+   Contoh disable sebuah tabel:
+   ```
+   # disable ‘customers_test’
+   ```
+   ![Alt text](image-4.png)
 4. Enable tabel
+   Perintah enable table digunakan untuk mengaktifkan kembali tabel yang sebelumnya di-disable.
+   Sintaks dasar:
+   ```
+   # enable ‘nama tabel’
+   ```
+   Contoh penggunaan: 
+   ```
+   # enable ‘customers_test’
+   ```
+   ![Alt text](image-5.png)
 5. Describe dan Alter
+   Perintah describe digunakan untuk menampilkan deskripsi dari sebuah tabel. Contoh sintaks:
+   ```
+   # describe ‘customers_test’
+   ```
+   ![Alt text](image-6.png)
+   Perintah alter digunakan untuk melakukan perubahan tabel yang sudah ada. Perubahan tersebut meliputi mengubah jumlah maksimum sel dari kelompok kolom, mengatur dan menghapus operator cakupan tabel, dan menghapus kelompok kolom dari tabel.
+   - Mengganti jumlah maksimum sel dari sebuah kolom family:
+     ```
+     alter 'customers_test', {NAME => 'personalData', VERSIONS => 5}
+     ```
+     ![Alt text](image-7.png)
+   - Table Scope Operators
+    Digunakan untuk mengatur dan menghapus table scope operators diantaranya adalah:
+      1. **MAX_FILESIZE**: Menentukan ukuran maksimum dari setiap file HFile di suatu region sebelum region tersebut dipecah menjadi dua region terpisah.
+       2. **READONLY**: Parameter ini digunakan untuk menjadikan sebuah tabel HBase hanya dapat dibaca (read-only) dan tidak dapat dimodifikasi.
+       3. **MEMSTORE_FLUSHSIZE**: Menentukan ukuran maksimum dari memstore sebelum data disimpan ke disk sebagai file HFile.
+       4. **DEFERRED_LOG_FLUSH**: Jika diatur, akan mengizinkan penundaan proses log flush untuk meningkatkan kinerja.
+   
+        Contoh mengatur setting Read Only: 
+        ```
+        # alter ‘<nama table>’, READONLY
+        ```
+        ![Alt text](image-8.png)
+    - Deleting Column Family
+        Berikut adalah contoh cara menghapus kolom family:
+        ```
+        # alter 'cutomers_test', 'DELETE', 'personalData'
+        ```
+        ![Alt text](image-9.png)
+
 6. Exists
-7. Drop tabel
-8. Create data
-9. Update data
-10. Read data
-11. Hapus data
-12. Scan
+   Perintah “exists” digunakan untuk mengetahui keberadaan sebuah tabel. Berikut adalah contoh penggunaannya:
+   ```
+    # exists ‘<nama tabel>’
+    ````
+    ![Alt text](image-10.png)
+    Hasil dari perintah di atas akan mengembalikan “true” jika tabel tersedia dan akan mengembalikan “false” jika sebaliknya.
+7. Scan
+   Perintah scan digunakan untuk melihat data, berikut adalah contoh perintahnya:
+   ```
+   # scan ‘<nama table>’
+   ```
+   ![Alt text](image-11.png)
+8. Drop tabel
+   Untuk menggunakan perintah drop terlebih dahulu harus men-disable tabel yang akan di-drop, berikut adalah contoh perintahnya:
+   ```
+   # disable ‘emp’
+   
+   # drop ‘emp’
+   ```
+   ![Alt text](image-12.png)
+
+   Selain menggunakan drop dapat menggunakan perintah drop_all dengan regex, berikut contoh penggunaannya:
+9.  Create data
+10. Update data
+11. Read data
+12. Hapus data
+13. Scan
