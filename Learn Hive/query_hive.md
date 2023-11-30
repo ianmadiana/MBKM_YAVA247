@@ -1,8 +1,10 @@
 # Query Join Hive antar tabel dan DB
 
+JOIN digunakan untuk menggabungkan data dari dua atau lebih tabel berdasarkan suatu kondisi tertentu. JOIN adalah salah satu fitur utama dalam query Hive untuk menggabungkan data dari berbagai tabel berdasarkan kolom atau kondisi tertentu. Berikut ini adalah contoh Studi kasus untuk penggunaan join pada Hive menggunakan database yang sama maupun database yang berbeda:
+
 ## Join 2 tabel
 
-1.
+1. Mengetahui nama customer dan status order
 ```
 SELECT
 jebi_customers.customerName,
@@ -14,15 +16,19 @@ ON jebi_customers.customerNumber = ian_orders.customerNumber LIMIT 10;
 
 ![ss](./images/1.png)
 
-2. 
+2. Mengetahui informasi jumlah order dari customer:
 ```
 SELECT c.customerName, o.orderNumber, o.shippedDate, o.status, p.amount, p.paymentDate
 FROM orders o JOIN payments p ON o.customerNumber = p.customerNumber
 JOIN customers c ON c.customerNumber = p.customerNumber LIMIT 10;
 ```
+
+SELECT o.orderNumber, o.shippedDate, o.status, p.amount, p.paymentDate
+FROM orders o JOIN payments p 
+ON (o.customerNumber = p.customerNumber) LIMIT 10;
 ![ss](./images/2.png)
 
-3.
+3. Mengetahui informasi stok barang:
 ```
 SELECT
  p.quantityInStock,
@@ -37,7 +43,7 @@ LIMIT 10;
 ![ss](./images/3.png)
 
 
-4..
+4. Mengetahui informasi dari customer:
 ```
 SELECT 
  o.customerNumber,
@@ -51,7 +57,6 @@ LIMIT 10;
 ```
 ![ss](./images/4.png)
 
-5..
 ```
 SELECT
 jebi_customers.customerNumber,
@@ -67,7 +72,7 @@ ON jebi_customers.customerNumber = ian_orders.customerNumber LIMIT 10;
 
 ## JOIN 3 tabel
 
-6.
+1. Mengetahui informasi dari employee:
 ```
 SELECT
 jebi_e.firstName,
