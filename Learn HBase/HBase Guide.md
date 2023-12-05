@@ -256,3 +256,5 @@ HBase adalah database terdistribusi sumber terbuka dan non-relasional yang dikem
     ```
     
     ![Alt text](image-20.png)
+
+    
