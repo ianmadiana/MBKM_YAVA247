@@ -51,3 +51,5 @@ WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,customer_data:customerName,c
 TBLPROPERTIES("hbase.table.name"="cs_ian");
 ```
 ![Alt text](image.png)
+
+Table Hive dan HBase sudah berhasil terintegrasi. Jika user menambahkan data di HBase maka data di Hive akan update.
