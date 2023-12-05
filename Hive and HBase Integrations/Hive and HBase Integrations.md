@@ -53,3 +53,21 @@ TBLPROPERTIES("hbase.table.name"="cs_ian");
 ![Alt text](image.png)
 
 Table Hive dan HBase sudah berhasil terintegrasi. Jika user menambahkan data di HBase maka data di Hive akan update.
+
+## Test Query
+
+Menampilkan informasi customer:
+
+```
+SELECT contactFirstName, contactLastName, city FROM hive_customers_ian;
+```
+
+![Alt text](image-1.png)
+
+Menampilkan informasi customer dari negara tertentu:
+
+```
+SELECT customerNumber, customername, phone, addressline1, country FROM hive_customers_jebi WHERE country = 'USA';
+```
+
+![Alt text](image-2.png)
