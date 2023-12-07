@@ -8,6 +8,7 @@ Buat table untuk menampung data yang akan dimasukkan dengan perintah berikut:
 ```
 
 Masukkan contoh data dengan perintah `put`:
+
 ```
 # put 'cs_ian','103','customer_data:customerName','Atelier graphique'
 # put 'cs_ian','103','customer_data:contactLastName','Schmitt'
@@ -50,6 +51,7 @@ STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
 WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,customer_data:customerName,customer_data:contactLastName,customer_data:contactFirstName,customer_data:phone,customer_address:addressLine1,customer_address:addressLine2,customer_address:city,customer_address:state,customer_address:postalCode,customer_address:country,transactions:salesRepEmployeeNumber,transactions:creditLimit")
 TBLPROPERTIES("hbase.table.name"="cs_ian");
 ```
+
 ![Alt text](image.png)
 
 Table Hive dan HBase sudah berhasil terintegrasi. Jika user menambahkan data di HBase maka data di Hive akan update.

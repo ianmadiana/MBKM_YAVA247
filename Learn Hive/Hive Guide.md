@@ -1,5 +1,7 @@
 # Hive Guide
 
+Apache Hive adalah proyek open source yang dijalankan oleh relawan di Apache Software Foundation. Hive merupakan suatu infrastruktur datawarehousing untuk Hadoop. Fungsi utama dari Hive adalah untuk menyediakan data summarization, query dan analisis. Hive juga mendukung analisis dataset berukuran besar yang tersimpan di HDFS Hadoop dan juga pada filesystem Amazon S3. Hive mendukung perintah yang mirip dengan SQL seperti akses ke data terstruktur yang dikenal dengan istilah Hive-QL (atau HQL) serta analisis data yang besar dengan bantuan MapReduce. Hive tidak dibangun untuk mendapatkan respon cepat terhadap query namun dibuat terutama untuk aplikasi data mining. Aplikasi data mining dapat memakan waktu beberapa menit hingga beberapa jam untuk menganalisis data dan Hive terutama digunakan di sana.
+
 1. Switch user ke Hive:
 
    ```
