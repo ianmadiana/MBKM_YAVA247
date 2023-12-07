@@ -25,6 +25,8 @@ Ini adalah table bernama "cs_ian" di HBase:
     !tables
     ```
 
+    ![Alt text](image-4.png)
+
 2. Selanjutnya membuat table di phoenix berdasarkan table target di HBase:
 
     ```
