@@ -27,7 +27,7 @@ Ini adalah table bernama "cs_ian" di HBase:
 
     ![Alt text](image-4.png)
 
-2. Selanjutnya membuat table di phoenix berdasarkan table target di HBase:
+2. Selanjutnya membuat `view` di phoenix berdasarkan table target di HBase:
 
     ```
     CREATE VIEW "cs_ian" ( ROWKEY VARCHAR PRIMARY KEY, "customer_data"."customerName" VARCHAR, "customer_data"."contactLastName" VARCHAR, "customer_data"."contactFirstName" VARCHAR, "customer_data"."phone" VARCHAR, "customer_address"."addressLine1" VARCHAR, "customer_address"."addressLine2" VARCHAR, "customer_address"."city" VARCHAR, "customer_address"."state" VARCHAR, "customer_address"."postalCode" VARCHAR, "customer_address"."country" VARCHAR, "transactions"."salesRepEmployeeNumber" VARCHAR, "transactions"."creditLimit" VARCHAR ) ;
