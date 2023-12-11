@@ -9,7 +9,7 @@ komputasi cluster di memory yang meningkatkan kecepatan pemrosesan aplikasi. Apa
 mencakup berbagai macam beban kerja seperti batch aplication, iterative algorithms, interactive queres dan
 streaming.
 
-## Akses Spark CLI
+## Akses Spark CLI menggunakan spark-shell
 
 1.  Masuk dengan user spark
 
