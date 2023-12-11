@@ -11,6 +11,8 @@ streaming.
 
 ## Akses Spark CLI menggunakan spark-shell
 
+`spark-shell` adalah shell interaktif untuk Apache Spark yang mendukung bahasa Scala.
+
 1.  Masuk dengan user spark
 
     ```
@@ -27,9 +29,20 @@ streaming.
 
     ![Alt text](image-2.png)
 
+## Akses Spark menggunakan pyspark
+
+`pyspark` memungkinkan pengguna untuk berinteraksi dengan Spark menggunakan bahasa pemrograman Python. Berikut adalah perintah untuk masuk ke spark shell:
+
+```
+pyspark
+```
+
+![Alt text](image-9.png)
+
 ## Spark Basic Query
 
 1. Load dan membaca data CSV dari HDFS:
+   
    Berikut ini adalah contoh untuk membaca data CSV dari HDFS `payments`:
 
    ```
