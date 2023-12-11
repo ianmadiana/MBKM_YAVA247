@@ -21,7 +21,7 @@ streaming.
 
     ![Alt text](image.png)
 
-2.  Akses spark-shell dengan `scala` menggunakan perintah berikut:
+2.  Akses spark-shell menggunakan perintah berikut:
 
     ```
     spark-shell
@@ -41,6 +41,8 @@ pyspark
 
 ## Spark Basic Query
 
+### Membaca data CSV dari HDFS dengan spark-shell:
+
 1. Load dan membaca data CSV dari HDFS:
    
    Berikut ini adalah contoh untuk membaca data CSV dari HDFS `payments`:
@@ -56,17 +58,39 @@ pyspark
    ```
    // variabel untuk menyimpan hasil read data CSV ke data frame
    
-   val df = spark.read.csv(pathPayments)
+   # val df = spark.read.csv(pathPayments)
 
    /// menampilkan data frame dengan opsi hanya menampilkan 20 baris dan memuat semua kolom pada data tersebut
 
-   df.show(20, false)
+   # df.show(20, false)
    ```
 
    ![Alt text](image-4.png)
 
+### Membaca data CSV dari HDFS dengan pyspark:
 
-## Spark SQL access to hive table
+1. Load dan baca data CSV dari HDFS:
+   
+   ```
+   orders = "hdfs:////tmp/ian/orders/orders.csv"
+   ```
+
+2. Masukkan data tersebut ke data frame:
+   
+   ```
+   df = spark.read.csv(orders)
+   ```
+
+3. Tampilkan data frame:
+   
+   ```
+   df.show()
+   ```
+
+   ![Alt text](image-10.png)
+
+
+## Spark SQL access to Hive table using spark-shell
 
 Berikut ini adalah contoh untuk membaca data di Hive menggunakan Spark SQL:
 
@@ -95,3 +119,51 @@ Berikut ini adalah contoh untuk membaca data di Hive menggunakan Spark SQL:
 
    ![Alt text](image-7.png)
    > menampilkan 50 data teratas
+
+## Spark read database and table on Hive using pyspark
+
+Berikut ini adalah langkah-langkah untuk membaca database dan table di Hive menggunakan pyspark
+
+import library python:
+
+```
+from pyspark.sql import SparkSession
+```
+
+Buat spark session dengan Hive support:
+
+```
+spark = SparkSession.builder.appName("ReadFromHive").enableHiveSupport().getOrCreate()
+```
+
+tampilkan list database menggunakan query sql:
+
+```
+spark.sql("SHOW DATABASES").show()
+```
+
+![Alt text](image-11.png)
+
+Memilih database:
+
+```
+spark.sql("USE <nama table>")
+```
+
+![Alt text](image-12.png)
+
+Menampilkan list table di database yang telah dipilih:
+
+```
+spark.sql("SHOW TABLES").show()
+```
+
+![Alt text](image-13.png)
+
+Menampilkan data di table tertentu:
+
+```
+spark.sql("SELECT * FROM payments").show()
+```
+
+![Alt text](image-14.png)
