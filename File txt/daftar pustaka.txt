@@ -1,0 +1,15 @@
+Oliviandi, S., Osmond, A. B., & Latuconsina, R. (n.d.). IMPLEMENTASI APACHE SPARK PADA BIG DATA BERBASIS HADOOP DISTRIBUTED FILE SYSTEM IMPLEMENTATION APACHE SPARK ON BIG DATA BASED HADOOP DISTRIBUTED FILE SYSTEM.
+
+Giri, P. R., & Sharma, G. (2022). Apache Hadoop Architecture, Applications, and Hadoop Distributed File System. Semiconductor Science and Information Devices, 4(1), 14. https://doi.org/10.30564/ssid.v4i1.4619
+
+web apache ambari
+
+zookeeper web
+
+Apache Phoenix -Cherepanova, E., Alexandrov, E., Alexandrov, I., Barberis, D., Canali, L., Fernandez Casani, A., Gallas, E., Montoro, C. G., Gonzalez De La Hoz, S., Hrivnac, J., Kazymov, A., Mineev, M., Prokoshin, F., Rybkin, G., Sanchez, J., Cairols, J. S., Villaplana Perez, M., Yakovlev, A., Cherepanova, E., … Yakovlev, A. (n.d.). Distributed Computing and Grid Technologies in Science and Education.
+
+apache livy: https://livy.apache.org/
+
+Apache zeppelin: https://www.datalearns247.com/penggunaan-user-impersonation-pada-apache-zeppelin-15
+
+https://linuxhint.com/debian_sources-list/

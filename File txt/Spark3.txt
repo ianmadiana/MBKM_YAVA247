@@ -1,0 +1,7 @@
+path = "hdfs:///tmp/jebi/customers/customers.csv"
+
+df3 = spark.read.option("delimiter", ";").option("header", True).csv(path)
+df3.show()
+
+
+val path = "hdfs:///tmp/jebi/customers/customers.csv"

@@ -1,0 +1,40 @@
+CREATE EXTERNAL TABLE IF not exists hive_table
+(key string, name string, city string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,info:name,address:city")
+TBLPROPERTIES("hbase.table.name"="hbase_table")
+
+CREATE EXTERNAL TABLE IF not exists hivetb_ian
+(key string, title string, genre string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,info:title,address:genre")
+TBLPROPERTIES("hbase.table.name"="hbase_anime");
+
+
+create 'cs_ian', 'customer_data', 'customer_address', 'transactions'
+
+put 'anime_table', 'anime_id_11', 'info:title', 'One Punch Man', 'info:genre', 'Action, Comedy, Super Power', 'info:year', '2015', 'ratings:average', '4.9', 'ratings:user_ratings', '1800'; put 'anime_table', 'anime_id_12', 'info:title', 'One Piece', 'info:genre', 'Action, Adventure, Comedy', 'info:year', '1999', 'ratings:average', '4.7', 'ratings:user_ratings', '2500'; put 'anime_table', 'anime_id_13', 'info:title', 'Jujutsu Kaisen', 'info:genre', 'Action, Demons, Supernatural', 'info:year', '2020', 'ratings:average', '4.8', 'ratings:user_ratings', '2000'; put 'anime_table', 'anime_id_14', 'info:title', 'Fairy Tail', 'info:genre', 'Action, Adventure, Fantasy', 'info:year', '2009', 'ratings:average', '4.5', 'ratings:user_ratings', '2200'; put 'anime_table', 'anime_id_15', 'info:title', 'Naruto', 'info:genre', 'Action, Adventure, Super Power', 'info:year', '2002', 'ratings:average', '4.4', 'ratings:user_ratings', '2300'; put 'anime_table', 'anime_id_16', 'info:title', 'Fullmetal Alchemist', 'info:genre', 'Action, Adventure, Drama', 'info:year', '2003', 'ratings:average', '4.6', 'ratings:user_ratings', '2100'; put 'anime_table', 'anime_id_17', 'info:title', 'Prison School', 'info:genre', 'Comedy, Ecchi, Romance', 'info:year', '2015', 'ratings:average', '4.0', 'ratings:user_ratings', '1700'; put 'anime_table', 'anime_id_18', 'info:title', 'Made in Abyss', 'info:genre', 'Adventure, Drama, Fantasy', 'info:year', '2017', 'ratings:average', '4.9', 'ratings:user_ratings', '1900'; put 'anime_table', 'anime_id_19', 'info:title', 'Akame ga Kill', 'info:genre', 'Action, Adventure, Fantasy', 'info:year', '2014', 'ratings:average', '4.3', 'ratings:user_ratings', '1600'; put 'anime_table', 'anime_id_20', 'info:title', 'Inuyasha', 'info:genre', 'Action, Adventure, Comedy', 'info:year', '2000', 'ratings:average', '4.2', 'ratings:user_ratings', '1500';
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS hive_customers_ian (
+  customerNumber STRING,
+  customerName STRING,
+  contactLastName STRING,
+  contactFirstName STRING,
+  phone STRING,
+  addressLine1 STRING,
+  addressLine2 STRING,
+  city STRING,
+  state STRING,
+  postalCode STRING,
+  country STRING,
+  salesRepEmployeeNumber STRING,
+  creditLimit STRING
+)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,customer_data:customerName,customer_data:contactLastName,customer_data:contactFirstName,customer_data:phone,customer_address:addressLine1,customer_address:addressLine2,customer_address:city,customer_address:state,customer_address:postalCode,customer_address:country,transactions:salesRepEmployeeNumber,transactions:creditLimit")
+TBLPROPERTIES("hbase.table.name"="cs_ian");

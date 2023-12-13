@@ -1,0 +1,42 @@
+from pyspark.sql import SparkSession
+
+# Inisialisasi SparkSession dengan Hive support
+spark = SparkSession.builder \
+    .appName("HiveTB") \
+    .enableHiveSupport() \
+    .getOrCreate()
+
+# Path file CSV di HDFS
+data = "hdfs://yavabuntu/tmp/ian/payments/payments.csv"
+
+# Membaca file CSV
+data_payment = spark.read.option("delimiter", ",").option("header", "true").csv(data)
+
+# Nama Hive table
+hive_table_name = "spark_payments"
+
+# Lokasi eksternal di HDFS
+external_location = "hdfs://yavabuntu/tmp/ian/orders"
+
+# Membuat tabel Hive sebagai tabel eksternal
+spark.sql(f"""
+    CREATE EXTERNAL TABLE IF NOT EXISTS {hive_table_name} (
+        customerNumber INT,
+        checkNumber STRING,
+        paymentDate DATE,
+        amount DOUBLE
+    )
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    LINES TERMINATED BY '\n'
+    STORED AS TEXTFILE
+    LOCATION '{external_location}'
+""")
+
+# Menyimpan DataFrame ke lokasi eksternal
+data_payment.write.mode("overwrite").csv(external_location)
+
+# Insert data into Hive table
+spark.sql(f"INSERT INTO TABLE {hive_table_name} SELECT * FROM {hive_table_name}")
+
+error:
+inode="/tmp/ian":hive:hdfs:drwxr-xr-x

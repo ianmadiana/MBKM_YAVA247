@@ -1,0 +1,10 @@
+SELECT
+jebi_e.firstName,
+jebi_e.email,
+jebi_c.customerNumber,
+jebi_c.city,
+ian_o.status
+FROM jebi.employees AS jebi_e
+JOIN jebi.customers AS jebi_c ON jebi_e.employeeNumber = jebi_c.salesRepEmployeeNumber
+JOIN ian.orders AS ian_o ON jebi_c.customerNumber = ian_o.customerNumber
+LIMIT 10;

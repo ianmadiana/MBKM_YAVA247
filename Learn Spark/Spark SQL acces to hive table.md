@@ -50,22 +50,27 @@ pyspark
    ```
    // variabel untuk menyimpan data CSV dari path HDFS
 
-   val pathPayments = "hdfs:///tmp/ian/payments/payments.csv"
+   val data = "hdfs://yavabuntu/tmp/ian/orders/orders.csv"
    ```
 
-   ![Alt text](image-3.png)
+   ![Alt text](image-15.png)
 
    ```
-   // variabel untuk menyimpan hasil read data CSV ke data frame
-   
-   # val df = spark.read.csv(pathPayments)
+   // Menggunakan delimiter untuk filter data
 
-   /// menampilkan data frame dengan opsi hanya menampilkan 20 baris dan memuat semua kolom pada data tersebut
-
-   # df.show(20, false)
+   val data_orders = spark.read.option("delimiter", ",").option("header", "true").csv(data)
    ```
 
-   ![Alt text](image-4.png)
+   ![Alt text](image-16.png)
+
+   ```
+
+   /// menampilkan data dengan fungsi `show()` dan menampilkan 10 baris teratas
+
+   data_orders.show(10)
+   ```
+
+   ![Alt text](image-17.png)
 
 ### Membaca data CSV dari HDFS dengan pyspark:
 

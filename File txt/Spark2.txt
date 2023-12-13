@@ -1,0 +1,174 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType
+
+
+spark = SparkSession.builder \
+    .appName("AnimeList") \
+    .config("spark.sql.warehouse.dir", "/hive/warehouse/dir") \
+    .enableHiveSupport() \
+    .getOrCreate()
+
+spark.sql("CREATE TABLE IF NOT EXISTS ian.table_anime (title STRING, rating INT)")
+
+
+-------------- PYSPARK create data frame ------------------
+
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType
+
+spark = SparkSession.builder.appName("AnimeList").getOrCreate()
+
+# create table Hive
+spark.sql("CREATE EXTERNAL TABLE IF NOT EXISTS ian.table_anime (title STRING, rating DOUBLE)")
+
+anime_data = [("Attack on Titan", 9.0),
+              ("One Punch Man", 8.5),
+              ("My Hero Academia", 8.7),
+              ("Demon Slayer", 9.2)]
+
+# Define the schema for the DataFrame
+schema = StructType([
+    StructField("title", StringType(), True),
+    StructField("rating", DoubleType(), True)
+])
+
+# Create the DataFrame
+myAnimeList = spark.createDataFrame(anime_data, schema=schema)
+
+# Show the DataFrame
+myAnimeList.show(truncate=False)
+
+myAnimeList.write.insertInto("ian.table_anime")
+
+
+-------------------- SPARK-SHELL -----------------------
+
+import org.apache.spark.sql.{SparkSession, SaveMode}
+
+// Create a Spark session with Hive support
+val spark = SparkSession.builder.appName("AnimeList").enableHiveSupport().getOrCreate()
+
+// Set the current database to 'ian'
+spark.sql("USE ian")
+
+// Sample data
+val animeData = Seq(
+  ("Attack on Titan", 9.0),
+  ("One Punch Man", 8.5),
+  ("My Hero Academia", 8.7),
+  ("Demon Slayer", 9.2)
+)
+
+// Define the schema for the DataFrame
+val schema = List("title", "rating")
+
+// Create the DataFrame
+val myAnimeList = spark.createDataFrame(animeData).toDF(schema: _*)
+
+// Show the DataFrame
+myAnimeList.show(false)
+
+// Create a Hive table named 'table_anime' with the specified schema
+spark.sql(
+  """
+    |CREATE TABLE IF NOT EXISTS table_anime (
+    |  title STRING,
+    |  rating DOUBLE
+    |)
+  """.stripMargin
+)
+
+// Insert data into the Hive table
+myAnimeList.write.mode(SaveMode.Append).insertInto("table_anime")
+
+
+spark.sql("""
+    CREATE EXTERNAL TABLE IF NOT EXISTS ian.table_anime (
+        title STRING,
+        rating DOUBLE
+    )
+    COMMENT 'External table for anime data'
+    LOCATION 'tmp/learn/ian/'
+""")
+
+
+----------------------------------------------------------------
+
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType
+
+# create session
+spark = SparkSession.builder.appName("AnimeList").enableHiveSupport().getOrCreate()
+
+# konfirmasi database dan table Hive
+spark.sql("SHOW DATABASES").show()
+spark.sql("USE <nama_table>")
+
+# create external table Hive
+spark.sql("""
+    CREATE EXTERNAL TABLE IF NOT EXISTS ian.anime_tb (
+        title STRING,
+        rating DOUBLE
+    )
+    COMMENT 'External table for anime data'
+    LOCATION '/tmp/ian/'
+""")
+
+spark.sql("""
+    CREATE TABLE IF NOT EXISTS ian.anime_tb (
+        title STRING,
+        rating DOUBLE
+    )
+    COMMENT 'External table for anime data'
+""")
+
+# create data
+anime_data = [("Attack on Titan", 9.0),
+              ("One Punch Man", 8.5),
+              ("My Hero Academia", 8.7),
+              ("Demon Slayer", 9.2)]
+
+# Define the schema for the DataFrame
+schema = StructType([
+    StructField("title", StringType(), True),
+    StructField("rating", DoubleType(), True)
+])
+
+# Create the DataFrame
+myAnimeList = spark.createDataFrame(anime_data, schema=schema)
+
+# Show the DataFrame
+myAnimeList.show()
+
+myAnimeList.createOrReplaceTempView("mytempTable") 
+
+sqlContext.sql("create table mytable as select * from mytempTable");
+
+
+# insert data to hive table
+myAnimeList.write.insertInto("ian.table_anime")
+
+insert-----
+myAnimeList.write.mode("append").format("hive").saveAsTable("ian.anime_list")
+
+
+spark.sql("""
+    CREATE EXTERNAL TABLE IF NOT EXISTS ian.anime_list2 (
+        title STRING,
+        rating DOUBLE
+    )
+    COMMENT 'External table for anime data'
+    LOCATION '/tmp/ian/learn3'
+    STORED AS PARQUET
+    """)
+
+beeline -u "jdbc:hive2://yava-n01.labs247.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2" -n hive
+
+
+sc = SparkSession.builder \
+    .appName("Spark") \
+    .master("spark://yava-n01.labs247.com:8088") \
+    .getOrCreate()
+
+pyspark --conf hive.metastore.uris=thrift://yava-n03.labs247.com:9083
+

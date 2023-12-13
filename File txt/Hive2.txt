@@ -1,0 +1,68 @@
+https://www.kaggle.com/datasets/willianoliveiragibin/animal-condition
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS employee ( eid int, name String,
+salary String, destination String)
+COMMENT 'Employee details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+LOAD DATA INPATH '/tmp/ian/learn1/data2.txt' INTO TABLE employee;
+
+
+hdfs dfs -put data.txt /tmp/ian/learn1/
+
+
+1201	Gopal	45000	Technical manager
+1202	Manisha	45000	Proof reader
+1203	Masthanvali	40000	Technical writer
+1204	Kiran	40000	Hr Admin
+1205	Kranthi	30000	Op Admin
+
+
+
+1206	upi	45001	HR
+1207	ones	45002	Leader 1
+1208	tapel	40003	Leader 2
+1209	oren	40004	GA1
+12010	ayu	30005	GA2
+
+------------------------------------
+1228	upin	30000	HR 2
+
+1222	memei	30001	GA 3
+1289	jarjit	30002	Leader 3
+
+1278	mail	40010	Leader 9
+1999	nanaho	43344	Leader 4
+1189	jebi	41123	Leader 6
+
+1289	jhon	40234	Leader 10
+1935	jane	43444	Leader 11
+1889	derby	41555	Leader 12
+1228	dave	30055	HR 23
+
+1228	dave	30055	HR 23 test
+
+----------------------------------
+
+desc formatted <nama_table>
+
+hdfs dfs -ls hdfs://yavabuntu/tmp/ian/learn1
+
+hdfs dfs -ls /tmp/ian/learn1
+
+show * from employee;
+
+----------------------------------------------------------------------------------
+
+CREATE EXTERNAL TABLE IF NOT EXISTS employee3 ( eid int, name String,
+salary String, destination String)
+COMMENT 'Employee details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+LOCATION '/tmp/ian/learn1/';

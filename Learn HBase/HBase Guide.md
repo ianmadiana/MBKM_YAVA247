@@ -7,7 +7,7 @@ HBase adalah database terdistribusi sumber terbuka dan non-relasional yang dikem
 1. Switch user ke hbase
 
     ```
-    # su - hive
+    # su - hbase
     ```
 
     ![Alt text](image.png)

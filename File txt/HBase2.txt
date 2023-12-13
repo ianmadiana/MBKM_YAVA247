@@ -1,0 +1,108 @@
+create 'customers_ian',
+ 'customerNumber', 'customerName', 'contactLastName', 'contactFirstName', 'phone', 'addressLine1', 'addressLine2', 'city', 'state', 'postalCode', 'country', 'salesRepEmployeeNumber', 'creditLimit'
+
+---------------------------------------------------------------
+
+create 'cs_ian', 'customer_data', 'customer_address', 'transactions'
+
+put 'cs_test','"103"','customer_data:customerName','"Atelier graphique"'
+put 'cs_test','"103"','customer_data:contactLastName','"Schmitt"'
+put 'cs_test','"103"','customer_data:contactFirstName','"Carine"'
+put 'cs_test','"103"','customer_data:phone','"40.32.2555"'
+
+put 'cs_test','"103"','customer_address:addressLine1','"54, rue Royale"'
+put 'cs_test','"103"','customer_address:addressLine2','NULL'
+put 'cs_test','"103"','customer_address:city','"Nantes"'
+put 'cs_test','"103"','customer_address:state','NULL'
+put 'cs_test','"103"','customer_address:postalCode','"440000"'
+put 'cs_test','"103"','customer_address:country','"France"'
+
+put 'cs_ian','103','transactions:salesRepEmployeeNumber','"1370"'
+put 'cs_ian','103','transactions:creditLimit','"210000"'
+
+-----AGAR BISA MEMBACA TABLE HBASE DI PHOENIX HARUS DIBUAT VIEW-----------------
+CREATE VIEW "cs_ian" ( ROWKEY VARCHAR PRIMARY KEY, "customer_data"."customerName" VARCHAR, "customer_data"."contactLastName" VARCHAR, "customer_data"."contactFirstName" VARCHAR, "customer_data"."phone" VARCHAR, "customer_address"."addressLine1" VARCHAR, "customer_address"."addressLine2" VARCHAR, "customer_address"."city" VARCHAR, "customer_address"."state" VARCHAR, "customer_address"."postalCode" VARCHAR, "customer_address"."country" VARCHAR, "transactions"."salesRepEmployeeNumber" VARCHAR, "transactions"."creditLimit" VARCHAR ) ;
+
+line vertical : !outputformat vertical
+
+1 line
+
+echo -e "put 'cs_ian','141','customer_data:customerName','Euro+ Shopping Channel'\nput 'cs_ian','141','customer_data:contactLastName','Freyre'\nput 'cs_ian','131','customer_data:contactFirstName','Diego'\nput 'cs_ian','141','customer_data:phone','(91) 555 94 44'\nput 'cs_ian','131','customer_address:addressLine1','C/ Moralzarzal, 86'\nput 'cs_ian','141','customer_address:addressLine2','NULL'\nput 'cs_ian','131','customer_address:city','Madrid'\nput 'cs_ian','141','customer_address:state','NULL'\nput 'cs_ian','131','customer_address:postalCode','28034'\nput 'cs_ian','141','customer_address:country','Spain'\nput 'cs_ian','131','transactions:salesRepEmployeeNumber','1370'\nput 'cs_ian','141','transactions:creditLimit','227600'" | hbase shell
+
+
+
+----------------------------------------------------------------
+
+put 'customers_ian','1','personalData:customerNumber','1'
+put 'customers_ian','1','personalData:customerName','Ian'
+put 'customers_ian','1','personalData:contactLastName','Miekelsen'
+put 'customers_ian','1','personalData:contactFirstName','Mads'
+put 'customers_ian','1','personalData:phone','021667788'
+put 'customers_ian','1','personalData:addressLine1','54, rue Royale'
+put 'customers_ian','1','personalData:addressLine2','Seven Water'
+put 'customers_ian','1','personalData:city','Skypia'
+put 'customers_ian','1','personalData:state','Los Santos'
+put 'customers_ian','1','personalData:postalCode','46383'
+put 'customers_ian','1','personalData:country','USA'
+
+put 'customers_ian','1','professionalData:salesRepEmployeeNumber','1370'
+put 'customers_ian','1','professionalData:creditLimit','21000'
+
+------------------------------------------------------------------------
+
+put 'customers_ian','2','personalData:customerNumber','103'
+put 'customers_ian','2','personalData:customerName','Atelier graphique'
+put 'customers_ian','2','personalData:contactLastName','Schmitt'
+put 'customers_ian','2','personalData:contactFirstName','Carine '
+put 'customers_ian','2','personalData:phone','40.32.2555'
+put 'customers_ian','2','personalData:addressLine1','54, rue Royale'
+put 'customers_ian','2','personalData:addressLine2',
+put 'customers_ian','2','personalData:city','Nantes'
+put 'customers_ian','2','personalData:state',''
+put 'customers_ian','2','personalData:postalCode','44000'
+put 'customers_ian','2','personalData:country','France'
+
+put 'customers_ian','2','professionalData:salesRepEmployeeNumber','1370'
+put 'customers_ian','2','professionalData:creditLimit','21000.0'
+
+
+bin/hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=","-Dimporttsv.columns=HBASE_ROW_KEY,cf jina /user/hbase/test/name.txt
+
+
+echo -e "put 'customers_ian','10','personalData:customerNumber','131'\nput 'customers_ian','10','personalData:customerName','Land of Toys Inc.'\nput 'customers_ian','10','personalData:contactLastName','Lee'\nput 'customers_ian','10','personalData:contactFirstName','Kwai'\nput 'customers_ian','10','personalData:phone','2125557818'\nput 'customers_ian','10','personalData:addressLine1','897 Long Airport Avenue'\nput 'customers_ian','10','personalData:addressLine2','NULL'\nput 'customers_ian','10','personalData:city','NYC'\nput 'customers_ian','10','personalData:state','NY'\nput 'customers_ian','10','personalData:postalCode','10022'\nput 'customers_ian','10','personalData:country','USA'\nput 'customers_ian','10','professionalData:salesRepEmployeeNumber','1323'\nput 'customers_ian','10','professionalData:creditLimit','114900.0'" | hbase shell
+
+echo -e "put 'customers_test','1','personalData:customerNumber','131'\nput 'customers_test','1','personalData:customerName','Land of Toys Inc.'\nput 'customers_test','1','personalData:contactLastName','Lee'\nput 'customers_test','1','personalData:contactFirstName','Kwai'\nput 'customers_test','1','personalData:phone','2125557818'\nput 'customers_test','1','personalData:addressLine1','897 Long Airport Avenue'\nput 'customers_test','1','personalData:addressLine2','NULL'\nput 'customers_test','1','personalData:city','NYC'\nput 'customers_test','1','personalData:state','NY'\nput 'customers_test','1','personalData:postalCode','10022'\nput 'customers_test','1','personalData:country','USA'\nput 'customers_test','1','professionalData:salesRepEmployeeNumber','1323'\nput 'customers_test','1','professionalData:creditLimit','114900.0'" | hbase shell
+
+alter 'customers_test', {NAME => 'personalData', VERSIONS => 5}
+
+
+
+alter 'cutomers_test', 'DELETE', 'personalData'
+
+put 'customers_test','2','personalData:customerNumber','102'
+put 'customers_test','2','personalData:customerName','Aleister'
+put 'customers_test','2','personalData:contactLastName','Jack'
+put 'customers_test','2','personalData:contactFirstName','Hugh'
+put 'customers_test','2','personalData:phone','30.32.2555'
+put 'customers_test','2','personalData:addressLine1','54, rue Royale Unola'
+put 'customers_test','2','personalData:addressLine2', 'Los'
+put 'customers_test','2','personalData:city','Nantesms'
+put 'customers_test','2','personalData:state','Kyosaka'
+put 'customers_test','2','personalData:postalCode','43000'
+put 'customers_test','2','personalData:country','France'
+
+put 'customers_test','2','professionalData:salesRepEmployeeNumber','1370'
+put 'customers_test','2','professionalData:creditLimit','21000.0'
+
+
+Update
+put ‘table name’,’row ’,'Column family:column name',’new value’
+
+read
+get ’customers_test’,’1’
+get 'customers_test', '1', 'personalData:customerName'
+get 'table_name', 'row_key', 'column_family:column_qualifier'
+
+delete
+delete 'customers_test', '1', 'personalData:customerName', 2023-11-29T15:17:12.318
+
