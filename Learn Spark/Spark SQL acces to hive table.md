@@ -173,7 +173,7 @@ spark.sql("SHOW DATABASES").show()
 Memilih database:
 
 ```
-spark.sql("USE <nama table>")
+spark.sql("USE <nama database>")
 ```
 
 ![Alt text](image-12.png)
