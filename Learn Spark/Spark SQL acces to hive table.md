@@ -39,6 +39,27 @@ pyspark
 
 ![Alt text](image-9.png)
 
+```
+//import library spark session
+from pyspark.sql import SparkSession
+
+//inisialisasi sesi Spark
+spark = SparkSession.builder.appName("example").getOrCreate()
+
+// Path data
+data_path = "hdfs://yavabuntu/tmp/ian/orders/orders.csv"
+
+# Membaca data menggunakan PySpark
+data_orders = spark.read.option("delimiter", ",").option("header", "true").csv(data_path)
+
+# Menampilkan 10 baris pertama
+data_orders.show(10)
+```
+
+![Alt text](image-26.png)
+
+#
+
 ## Spark Basic Query
 
 ### Membaca data CSV dari HDFS dengan spark-shell:
@@ -77,7 +98,7 @@ pyspark
 1. Load dan baca data CSV dari HDFS:
    
    ```
-   orders = "hdfs:////tmp/ian/orders/orders.csv"
+   orders = "hdfs:///tmp/ian/orders/orders.csv"
    ```
 
 2. Masukkan data tersebut ke data frame:

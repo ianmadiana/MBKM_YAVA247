@@ -106,7 +106,6 @@ Berikut adalah cara membuat table yang mempunyai column family di Phoenix:
     ```
 
     ![Alt text](image-13.png)
-5. .
 
 
 
