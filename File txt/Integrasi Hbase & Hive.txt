@@ -1,0 +1,59 @@
+Integrasi Hbase & Hive
+load csv ke hbase dan di baca dari hive
+
+----HBase---------
+
+create '<nama_table>', 'column_fam1', 'column_fam2', 'column_fam3'
+
+create 'customers_tb', 'customer_data', 'customer_address', 'transactions'
+
+----------------------------------------------------------------------------------
+
+put 'customers_tb','"103"','customer_data:customerName','"Atelier graphique"'
+put 'customers_tb','"103"','customer_data:contactLastName','"Schmitt"'
+put 'customers_tb','"103"','customer_data:contactFirstName','"Carine"'
+put 'customers_tb','"103"','customer_data:phone','"40.32.2555"'
+
+put 'customers_tb','"103"','customer_address:addressLine1','"54, rue Royale"'
+put 'customers_tb','"103"','customer_address:addressLine2','NULL'
+put 'customers_tb','"103"','customer_address:city','"Nantes"'
+put 'customers_tb','"103"','customer_address:state','NULL'
+put 'customers_tb','"103"','customer_address:postalCode','"440000"'
+put 'customers_tb','"103"','customer_address:country','"France"'
+
+put 'customers_tb','103','transactions:salesRepEmployeeNumber','"1370"'
+put 'customers_tb','103','transactions:creditLimit','"210000"'
+
+----------------------------------------------------------------------------------
+
+echo -e "put 'customers_tb','103','customer_data:customerName','Atelier graphique'\nput 'customers_tb','103','customer_data:contactLastName','Schmitt'\nput 'customers_tb','103','customer_data:contactFirstName','Carine'\nput 'customers_tb','103','customer_data:phone','40.32.2555'\nput 'cs_ian','103','customer_address:addressLine1','54, rue Royale'\nput 'customers_tb','103','customer_address:addressLine2','NULL'\nput 'customers_tb','103','customer_address:city','Nantes'\nput 'customers_tb','103','customer_address:state','NULL'\nput 'customers_tb','103','customer_address:postalCode','440000'\nput 'customers_tb','103','customer_address:country','France'\nput 'customers_tb','103','transactions:salesRepEmployeeNumber','1370'\nput 'customers_tb','103','transactions:creditLimit','210000'" | hbase shell
+
+----------------------------------------------------------------------------------
+
+#### HIVE ####
+
+CREATE EXTERNAL TABLE IF NOT EXISTS customers_tb (
+  customerNumber STRING,
+  customerName STRING,
+  contactLastName STRING,
+  contactFirstName STRING,
+  phone STRING,
+  addressLine1 STRING,
+  addressLine2 STRING,
+  city STRING,
+  state STRING,
+  postalCode STRING,
+  country STRING,
+  salesRepEmployeeNumber STRING,
+  creditLimit STRING
+)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,customer_data:customerName,customer_data:contactLastName,customer_data:contactFirstName,customer_data:phone,customer_address:addressLine1,customer_address:addressLine2,customer_address:city,customer_address:state,customer_address:postalCode,customer_address:country,transactions:salesRepEmployeeNumber,transactions:creditLimit")
+TBLPROPERTIES("hbase.table.name"="customers_tb");
+
+-----------------------------Test Query Hive-----------------------------------------------------
+
+
+SELECT * FROM customers_tb;
+
+SELECT contactFirstName, contactLastName, city FROM customers_tb;
